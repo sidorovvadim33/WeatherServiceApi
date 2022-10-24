@@ -41,6 +41,15 @@ func (h *handler) Register(router *httprouter.Router) {
 	router.HandlerFunc(http.MethodGet, usersFavURL, apperror.Middleware(h.GetUserFavourites))
 }
 
+// GetUser godoc
+// @Summary      Get user by uuid
+// @Description  Get user by uuid
+// @Tags         Users
+// @Accept       json
+// @Produce      json
+// @Param        uuid    path     string  true  "User uuid"
+// @Success      200  {array}  User
+// @Router       /users/{uuid} [get]
 func (h *handler) GetUser(w http.ResponseWriter, r *http.Request) error {
 	h.Logger.Info("GET USER")
 	w.Header().Set("Content-Type", "application/json")
@@ -65,6 +74,16 @@ func (h *handler) GetUser(w http.ResponseWriter, r *http.Request) error {
 	return nil
 }
 
+// GetUserByEmailAndPassword godoc
+// @Summary      Get user by email and password
+// @Description  Get user by email and password
+// @Tags         Users
+// @Accept       json
+// @Produce      json
+// @Param        email    query     string  true  "User email"
+// @Param        password    query     string  true  "User password"
+// @Success      200  {array}  User
+// @Router       /users [get]
 func (h *handler) GetUserByEmailAndPassword(w http.ResponseWriter, r *http.Request) error {
 	h.Logger.Info("GET USER BY EMAIL AND PASSWORD")
 	w.Header().Set("Content-Type", "application/json")
@@ -93,6 +112,16 @@ func (h *handler) GetUserByEmailAndPassword(w http.ResponseWriter, r *http.Reque
 	return nil
 }
 
+// GetUserFavourites godoc
+// @Summary      Get user favourite cities
+// @Description  Get user favourite cities by email and password
+// @Tags         Users Favourite Cities
+// @Accept       json
+// @Produce      json
+// @Param        email    query     string  true  "User email"
+// @Param        password    query     string  true  "User password"
+// @Success      200  {array}  []cityClient.CityData
+// @Router       /userfavs [get]
 func (h *handler) GetUserFavourites(w http.ResponseWriter, r *http.Request) error {
 	h.Logger.Info("GET USER FAVOURITE CITIES BY EMAIL AND PASSWORD")
 	w.Header().Set("Content-Type", "application/json")
@@ -126,6 +155,15 @@ func (h *handler) GetUserFavourites(w http.ResponseWriter, r *http.Request) erro
 	return nil
 }
 
+// CreateUser godoc
+// @Summary      Create new user
+// @Description  Create new user by email and password
+// @Tags         Users
+// @Accept       json
+// @Produce      json
+// @Param        crUser    body     CreateUserDTO  true  "New user"
+// @Success      200  {array}  []cityClient.CityData
+// @Router       /users [post]
 func (h *handler) CreateUser(w http.ResponseWriter, r *http.Request) error {
 	h.Logger.Info("CREATE USER")
 	w.Header().Set("Content-Type", "application/json")
@@ -147,6 +185,16 @@ func (h *handler) CreateUser(w http.ResponseWriter, r *http.Request) error {
 	return nil
 }
 
+// CreateFavourite godoc
+// @Summary      Create new user favourite city
+// @Description  Create new user favourite city by email and password
+// @Tags         Users Favourite Cities
+// @Accept       json
+// @Produce      json
+// @Param        uuid    path     string  true  "User uuid"
+// @Param        crUser    body      UserFavouriteCityDTO  true  "User with city"
+// @Success      200  {array}  []cityClient.CityData
+// @Router       /userfavs/{uid} [post]
 func (h *handler) CreateFavourite(w http.ResponseWriter, r *http.Request) error {
 	h.Logger.Info("ADD CITY TO USER FAVOURITES")
 	w.Header().Set("Content-Type", "application/json")
@@ -171,6 +219,15 @@ func (h *handler) CreateFavourite(w http.ResponseWriter, r *http.Request) error 
 	return nil
 }
 
+// PartiallyUpdateUser godoc
+// @Summary      Partially user update
+// @Tags         Users
+// @Accept       json
+// @Produce      json
+// @Param        uuid    path     string  true  "User uuid"
+// @Param        crUser    body     UpdateUserDTO  true  "Updated user"
+// @Success      204
+// @Router       /users/{uuid} [patch]
 func (h *handler) PartiallyUpdateUser(w http.ResponseWriter, r *http.Request) error {
 	h.Logger.Info("PARTIALLY UPDATE USER")
 	w.Header().Set("Content-Type", "application/json")
@@ -195,6 +252,14 @@ func (h *handler) PartiallyUpdateUser(w http.ResponseWriter, r *http.Request) er
 	return nil
 }
 
+// DeleteUser godoc
+// @Summary      Delete user by uuid param
+// @Tags         Users
+// @Accept       json
+// @Produce      json
+// @Param        uuid    path     string  true  "User uuid"
+// @Success      204
+// @Router       /users/{uuid} [delete]
 func (h *handler) DeleteUser(w http.ResponseWriter, r *http.Request) error {
 	h.Logger.Info("DELETE USER")
 	w.Header().Set("Content-Type", "application/json")
@@ -212,6 +277,15 @@ func (h *handler) DeleteUser(w http.ResponseWriter, r *http.Request) error {
 	return nil
 }
 
+// DeleteFromFavourites godoc
+// @Summary      Delete city from user favourites
+// @Tags         Users Favourite Cities
+// @Accept       json
+// @Produce      json
+// @Param        uuid    path     string  true  "User uuid"
+// @Param        crUser    body     UserFavouriteCityDTO  true  "User and city"
+// @Success      204
+// @Router       /userfavs/{uuid} [delete]
 func (h *handler) DeleteFromFavourites(w http.ResponseWriter, r *http.Request) error {
 	h.Logger.Info("DELETE CITY FROM USER FAVOURITES")
 	w.Header().Set("Content-Type", "application/json")

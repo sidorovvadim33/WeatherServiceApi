@@ -20,6 +20,13 @@ import (
 	"time"
 )
 
+// @title Weather App Api
+// @version 1.0
+// @description API Server for Weather Application, parsing http://api.openweathermap.org
+
+// @host localhost:8090
+// @BasePath /api
+
 func main() {
 	logger := logging.GetLogger()
 
