@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  api:
+    build: ./
+    command: ./WeatherServiceAPI
+    ports:
+      - 8090:8090
+    depends_on:
+      - postgres-weather-service
+  postgres-weather-service:
+    container_name: postgres-weather-service
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: "weatherApi"
+      POSTGRES_USER: "simpleuser"
+      POSTGRES_PASSWORD: "123456"
+    ports:
+      - "5678:5432"
+    volumes:
+      - ./migrations/000001_init_schema.up.sql:/docker-entrypoint-initdb.d/init.sql

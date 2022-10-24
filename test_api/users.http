@@ -1,0 +1,61 @@
+### Get user
+
+GET http://localhost:8090/api/users?email=vadson&password=123456
+Accept: application/json
+
+### Create user
+
+POST http://localhost:8090/api/users/
+Content-Type: application/json
+
+{
+  "email": "gelo@gmail.com",
+  "password": "123",
+  "repeat_password": "123"
+}
+
+
+### Update user
+
+PATCH http://localhost:8090/api/users/03362bc3-4222-4211-995a-24c5124c5688
+Content-Type: application/json
+
+{
+  "email": "vadson",
+  "old_password": "123",
+  "new_password": "123456"
+}
+
+### Delete user
+
+DELETE http://localhost:8090/api/users/03362bc3-4222-4211-995a-24c5124c5688
+Content-Type: application/json
+
+### Get user favourites
+
+GET http://localhost:8090/api/userfavs?email=vadson&password=123456
+Accept: application/json
+
+### Create user fav city
+
+PATCH http://localhost:8090/api/userfavs/03362bc3-4222-4211-995a-24c5124c5688
+Content-Type: application/json
+
+{
+  "email": "vadson",
+  "password": "123456",
+  "city_id": "053437c7-dfd8-4348-a272-7ead8ca10f39"
+}
+
+### Delete city from user favourites
+
+DELETE http://localhost:8090/api/userfavs/03362bc3-4222-4211-995a-24c5124c5688
+Content-Type: application/json
+
+{
+  "email": "vadson",
+  "password": "123456",
+  "city_id": "053437c7-dfd8-4348-a272-7ead8ca10f39"
+}
+
+

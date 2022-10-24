@@ -1,0 +1,20 @@
+### Get cities
+
+GET http://localhost:8090/api/cities/
+Accept: application/json
+
+### Get city brief weather and dates
+
+GET http://localhost:8090/api/cities/Moscow
+Accept: application/json
+
+### Get city weather by the time
+
+GET http://localhost:8090/api/cities/Moscow/2022-10-29T09:00:00Z
+Accept: application/json
+
+
+### Get city weather by the time (other accessable time format)
+
+GET http://localhost:8090/api/cities/Moscow/2022-10-29 09:00:00
+Accept: application/json

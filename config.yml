@@ -1,0 +1,16 @@
+---
+
+is_debug: true
+api_id: c76d97cfb6b454e2bb61a2c9cb0474c4
+listen:
+  type: port
+  bind_ip: 0.0.0.0
+  port: 8090
+storage:
+  host: host.docker.internal
+  port: 5678
+  database: weatherApi
+  username: simpleuser
+  password: 123456
+
+
